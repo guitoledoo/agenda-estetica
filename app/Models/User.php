@@ -9,6 +9,14 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+
+public function appointments(){
+    return $this->hasMany(Appointment::class);
+}
+
+
+
+    
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
@@ -45,4 +53,5 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    
 }
