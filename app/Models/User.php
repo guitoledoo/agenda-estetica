@@ -29,6 +29,7 @@ public function appointments(){
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
