@@ -4,6 +4,10 @@ namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
+
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -58,5 +62,15 @@ class RouteServiceProvider extends ServiceProvider
              ->middleware('api')
              ->namespace($this->namespace)
              ->group(base_path('routes/api.php'));
+    }
+
+    public function redirectTo()
+    {
+        /** @var User $user */
+        $user = Auth::user();
+
+        return $user->role === 'admin'
+            ? route('admin.dashboard')
+            : route('user.dashboard');
     }
 }

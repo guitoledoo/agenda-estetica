@@ -9,13 +9,13 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('role:user');
+        // $this->middleware('role:user');
     }
 
-    public function index()
+    public function dashboard()
     {
-        // Retorna a página do usuário com dados relevantes
         return Inertia::render('User/Dashboard');
     }
+
 }
 

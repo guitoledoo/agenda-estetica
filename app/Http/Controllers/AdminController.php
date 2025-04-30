@@ -9,10 +9,9 @@ class AdminController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('role:admin');
-        
+        // $this->middleware('role:admin');
     }
-    public function index()
+    public function dashboard()
     {
         return Inertia::render('Admin/Dashboard');
     }

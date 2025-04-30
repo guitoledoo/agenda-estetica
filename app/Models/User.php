@@ -13,9 +13,6 @@ class User extends Authenticatable
 public function appointments(){
     return $this->hasMany(Appointment::class);
 }
-
-
-
     
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;

@@ -30,25 +30,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/agendamentos', [AppointmentController::class, 'index'])->name('appointments.index');
     Route::get('/servicos', [ServiceController::class, 'index'])->name('services.index');
     Route::get('/', [HomeController::class, 'index'])->name('home');
-
-   
 });
 
-Route::middleware(['auth', 'role:admin,user'])->group(function () {
-    Route::get('/agendamentos', [AppointmentController::class, 'index'])->name('appointments.index');
+Route::get('/admin', [AdminController::class, 'index']);
+Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+
+Route::get('/user', [UserController::class, 'index']);
+Route::get('/user/dashboard', [UserController::class, 'dashboard'])->name('user.dashboard');
+
+
+Route::middleware(['auth', 'role:admin'])->get('/test', function () {
+    return 'Middleware funcionando corretamente!';
 });
 
-
-Route::middleware(['auth', 'role:admin'])->group(function () {
-    // Rotas protegidas para administradores
-    Route::get('/admin', [AdminController::class, 'index']);
-});
-
-
-Route::middleware(['auth', 'role:user'])->group(function () {
-    // Rotas protegidas para usuários
-    Route::get('/user', [UserController::class, 'index']);
-});
-
-
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
