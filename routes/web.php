@@ -39,8 +39,8 @@ Route::get('/user', [UserController::class, 'index']);
 Route::get('/user/dashboard', [UserController::class, 'dashboard'])->name('user.dashboard');
 
 
-Route::middleware(['auth', 'role:admin'])->get('/test', function () {
-    return 'Middleware funcionando corretamente!';
+Route::get('/test', function () {
+    return 'Você tem acesso ao painel de admin!';
 });
 
 require __DIR__ . '/auth.php';
